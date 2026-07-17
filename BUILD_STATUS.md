@@ -1,15 +1,16 @@
-# XAVI-OS MVP Build Status
+# XAVI-OS Build Status
 
-- TypeScript validation: passed
-- Android Metro production bundle: passed
-- Android/iOS source: ready
-- Current data mode: local demo
-- Real authentication: schema prepared, credentials not yet connected
-- Real payment: intentionally disabled until a verified business payment account exists
-- APK/IPA cloud build: requires the owner's Expo account
-- App Store publication: requires Apple Developer membership
-- Play Store publication: requires Google Play Console account
+## Stage 2 implementation
 
-The demo checkout never transfers money. Do not enable commissions before the
-payment webhook, refund reversal, idempotency, and identity verification flows
-are implemented and tested.
+- TypeScript strict validation: implemented
+- ESLint: implemented
+- Jest unit tests: implemented
+- Expo SDK 54 dependency validation: implemented
+- Supabase Auth client: implemented but not connected without owner-provided `.env`
+- Secure mobile session persistence: implemented with encrypted chunked storage
+- Versioned Auth/Profile migration: prepared, not deployed
+- RLS pgTAP tests: prepared, not executed because Supabase CLI is unavailable locally
+- Xendit and real payment: intentionally absent
+
+An app started without the two public Supabase variables displays a safe Configuration
+Error and never falls back to fake credentials or a demo authenticated state.
