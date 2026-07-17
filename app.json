@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "XAVI-OS",
+    "slug": "xavi-os",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.xavindo.xavios" },
+    "android": { "package": "com.xavindo.xavios", "adaptiveIcon": { "backgroundColor": "#050B18" } },
+    "plugins": [],
+    "extra": { "appMode": "demo" }
+  }
+}
