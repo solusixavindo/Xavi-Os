@@ -4,7 +4,8 @@
 
 - Expo SDK 54, React Native, and TypeScript strict mode
 - React Navigation auth guards derived from validated Supabase state
-- Only the Supabase URL and anon key are available to the mobile bundle
+- Only the Supabase URL and an `sb_publishable_` key are available to the mobile bundle
+- Secret keys, service-role JWTs, and legacy anon JWTs are rejected by environment validation
 - Supabase sessions use encrypted, chunked SecureStore persistence on Android/iOS
 - Token refresh runs only while the native app is active
 - Auth URLs use PKCE and the `xavi-os://` custom scheme

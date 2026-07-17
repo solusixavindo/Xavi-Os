@@ -27,12 +27,15 @@ cp .env.example .env
 Fill only the two public mobile values in `.env`:
 
 ```text
-EXPO_PUBLIC_SUPABASE_URL=
-EXPO_PUBLIC_SUPABASE_ANON_KEY=
+EXPO_PUBLIC_SUPABASE_URL=https://bouxqdjongalkkbvcchm.supabase.co
+EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<copy the sb_publishable_ value locally>
 ```
 
-Never place a Supabase service-role key, database password, Xendit key, or another
-server secret in an Expo environment variable.
+Copy the publishable key directly from the XAVI-OS Development Dashboard into the
+ignored local `.env`; do not send it through chat or commit it. The mobile configuration
+accepts only the `sb_publishable_` format. Never place a Supabase secret/service-role
+key, legacy key, database password, Xendit key, or another server secret in an Expo
+environment variable.
 
 Run the checks:
 
@@ -43,7 +46,8 @@ npm test
 ```
 
 Start the app with `npm start`. A development build is required to test the stable
-`xavi-os://` email verification and password recovery callbacks.
+`xavi-os://` email verification and password recovery callbacks. Expo Go is useful for
+basic UI development but is not sufficient for complete custom-scheme Auth UAT.
 
 ## Database
 

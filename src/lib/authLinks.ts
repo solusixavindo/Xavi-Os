@@ -29,13 +29,19 @@ export async function handleAuthDeepLink(client: SupabaseClient, rawUrl: string)
   }
 
   const parameters = getAllParameters(url);
+  const linkType = parameters.get('type');
+  const passwordRecovery = url.pathname === '/reset-password';
+  const typeMatchesPath = passwordRecovery
+    ? linkType === null || linkType === 'recovery'
+    : linkType === null || linkType === 'signup';
+  if (!typeMatchesPath) return { handled: false, passwordRecovery: false };
+
   const providerError = parameters.get('error_description') ?? parameters.get('error');
   if (providerError) throw new Error('Tautan autentikasi tidak valid atau sudah kedaluwarsa.');
 
   const code = parameters.get('code');
   const accessToken = parameters.get('access_token');
   const refreshToken = parameters.get('refresh_token');
-  const passwordRecovery = url.pathname.includes('reset-password') || parameters.get('type') === 'recovery';
 
   async function validateServerSession(): Promise<void> {
     const verified = await client.auth.getUser();

@@ -1,6 +1,6 @@
 export type PublicEnvironment = {
   supabaseUrl: string;
-  supabaseAnonKey: string;
+  supabasePublishableKey: string;
 };
 
 export type EnvironmentResult =
@@ -9,7 +9,7 @@ export type EnvironmentResult =
 
 type RawEnvironment = {
   supabaseUrl?: string;
-  supabaseAnonKey?: string;
+  supabasePublishableKey?: string;
 };
 
 function isAllowedSupabaseUrl(value: string): boolean {
@@ -21,10 +21,14 @@ function isAllowedSupabaseUrl(value: string): boolean {
   }
 }
 
+function isPublishableKey(value: string): boolean {
+  return /^sb_publishable_[A-Za-z0-9_-]{20,}$/.test(value);
+}
+
 export function validateEnvironment(raw: RawEnvironment): EnvironmentResult {
   const issues: string[] = [];
   const supabaseUrl = raw.supabaseUrl?.trim() ?? '';
-  const supabaseAnonKey = raw.supabaseAnonKey?.trim() ?? '';
+  const supabasePublishableKey = raw.supabasePublishableKey?.trim() ?? '';
 
   if (!supabaseUrl) {
     issues.push('EXPO_PUBLIC_SUPABASE_URL belum dikonfigurasi.');
@@ -32,10 +36,10 @@ export function validateEnvironment(raw: RawEnvironment): EnvironmentResult {
     issues.push('EXPO_PUBLIC_SUPABASE_URL harus berupa URL HTTPS yang valid.');
   }
 
-  if (!supabaseAnonKey) {
-    issues.push('EXPO_PUBLIC_SUPABASE_ANON_KEY belum dikonfigurasi.');
-  } else if (supabaseAnonKey.length < 20) {
-    issues.push('EXPO_PUBLIC_SUPABASE_ANON_KEY tidak valid.');
+  if (!supabasePublishableKey) {
+    issues.push('EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY belum dikonfigurasi.');
+  } else if (!isPublishableKey(supabasePublishableKey)) {
+    issues.push('EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY harus menggunakan format sb_publishable_.');
   }
 
   if (issues.length > 0) {
@@ -44,13 +48,13 @@ export function validateEnvironment(raw: RawEnvironment): EnvironmentResult {
 
   return {
     ok: true,
-    value: { supabaseUrl, supabaseAnonKey },
+    value: { supabaseUrl, supabasePublishableKey },
   };
 }
 
 export function readPublicEnvironment(): EnvironmentResult {
   return validateEnvironment({
     supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
-    supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
+    supabasePublishableKey: process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
   });
 }

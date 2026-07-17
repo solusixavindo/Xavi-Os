@@ -50,6 +50,29 @@ describe('Supabase auth deep links', () => {
     expect(exchangeCodeForSession).not.toHaveBeenCalled();
   });
 
+  test('rejects recovery callbacks sent to the signup callback path', async () => {
+    const { client, exchangeCodeForSession } = authClient();
+    await expect(
+      handleAuthDeepLink(client, 'xavi-os://auth/callback?code=ignored&type=recovery'),
+    ).resolves.toEqual({ handled: false, passwordRecovery: false });
+    expect(exchangeCodeForSession).not.toHaveBeenCalled();
+  });
+
+  test('rejects signup callbacks sent to the recovery path', async () => {
+    const { client, exchangeCodeForSession } = authClient();
+    await expect(
+      handleAuthDeepLink(client, 'xavi-os://auth/reset-password?code=ignored&type=signup'),
+    ).resolves.toEqual({ handled: false, passwordRecovery: false });
+    expect(exchangeCodeForSession).not.toHaveBeenCalled();
+  });
+
+  test('sanitizes provider errors on known paths', async () => {
+    const { client } = authClient();
+    await expect(
+      handleAuthDeepLink(client, 'xavi-os://auth/callback?error_description=raw-provider-detail'),
+    ).rejects.toThrow('Tautan autentikasi tidak valid atau sudah kedaluwarsa.');
+  });
+
   test('clears an exchanged session that server validation rejects', async () => {
     const { client, getUser, signOut } = authClient();
     getUser.mockResolvedValueOnce({ data: { user: null }, error: new Error('invalid') } as never);
