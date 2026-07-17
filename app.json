@@ -2,9 +2,12 @@
   "expo": {
     "name": "XAVI-OS",
     "slug": "xavi-os",
+    "owner": "xavindos-team",
     "scheme": "xavi-os",
     "version": "0.1.0",
     "orientation": "portrait",
+    "backgroundColor": "#050B18",
+    "icon": "./assets/brand/icon/app-icon.png",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
@@ -17,16 +20,42 @@
     "android": {
       "package": "com.xavindo.xavios",
       "adaptiveIcon": {
-        "backgroundColor": "#050B18"
-      }
+        "foregroundImage": "./assets/brand/icon/adaptive-foreground.png",
+        "backgroundColor": "#050B18",
+        "monochromeImage": "./assets/brand/icon/adaptive-monochrome.png"
+      },
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.VIBRATE"
+      ]
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash/splash-logo.png",
+          "imageWidth": 240,
+          "resizeMode": "contain",
+          "backgroundColor": "#050B18",
+          "dark": {
+            "image": "./assets/brand/splash/splash-logo.png",
+            "backgroundColor": "#050B18"
+          }
+        }
+      ],
       [
         "expo-secure-store",
         {
           "configureAndroidBackup": true
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "41d8aade-8d36-46d7-933c-e8e787ef3c59"
+      }
+    }
   }
 }

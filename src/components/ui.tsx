@@ -1,6 +1,7 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 import {
   ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -18,7 +19,12 @@ import { C } from '../theme';
 export function Brand({ small = false }: { small?: boolean }) {
   return (
     <View style={styles.brand}>
-      <Text style={[styles.mark, small && styles.smallMark]}>X</Text>
+      <Image
+        accessibilityLabel="Ecosystem X"
+        resizeMode="contain"
+        source={require('../../assets/brand/icon/app-icon.png')}
+        style={[styles.mark, small && styles.smallMark]}
+      />
       <Text style={[styles.brandText, small && styles.smallBrandText]}>XAVI-OS</Text>
     </View>
   );
@@ -158,8 +164,8 @@ const styles = StyleSheet.create({
     right: -130,
   },
   brand: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  mark: { fontSize: 34, color: C.cyan, textShadowColor: C.violet, textShadowRadius: 14 },
-  smallMark: { fontSize: 24 },
+  mark: { borderRadius: 9, height: 34, width: 34 },
+  smallMark: { borderRadius: 6, height: 24, width: 24 },
   brandText: { color: C.text, fontWeight: '800', fontSize: 18, letterSpacing: 4 },
   smallBrandText: { fontSize: 13 },
   pill: { borderWidth: 1, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5, alignSelf: 'flex-start' },

@@ -59,3 +59,12 @@ supabase/migrations/20260717160000_auth_profiles.sql
 ```
 
 See [docs/SUPABASE_AUTH_SETUP.md](docs/SUPABASE_AUTH_SETUP.md) before connecting a project.
+
+Android development-client and EAS environment preparation is documented in
+[docs/EAS_DEVELOPMENT_BUILD.md](docs/EAS_DEVELOPMENT_BUILD.md). The development build
+must not be started until branding assets and cloud environment configuration are reviewed.
+
+Ecosystem X production assets are reproducible with `npm run brand:generate` and validated
+with `npm run brand:check`. The approved reference files remain under `assets/brand/reference/`.
+See [docs/ECOSYSTEM_X_BRANDING.md](docs/ECOSYSTEM_X_BRANDING.md) for the asset map, safe-zone
+rules, and startup animation behavior.

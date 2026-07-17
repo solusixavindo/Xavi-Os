@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "generator": "scripts/generate-brand-assets.mjs",
+  "reference": {
+    "path": "assets/brand/reference/ecosystem-x-app-icon.png",
+    "sha256": "89d4bcc5d9c7d5a970613b48999e68bd3f5535f4b7572423c0291731e83d5257",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  "background": "#050B18",
+  "outputs": {
+    "appIcon": {
+      "path": "assets/brand/icon/app-icon.png",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "sha256": "c87b380e51156896bfa56d36c82be1037b68555ac40de47b30ee4e3b1fac7648"
+    },
+    "adaptiveForeground": {
+      "path": "assets/brand/icon/adaptive-foreground.png",
+      "width": 1024,
+      "height": 1024,
+      "alpha": true,
+      "sha256": "7cd77302c234264ed55dbe7b60eccfd030ab8bbba850e607eab2dc3e1b577d1b"
+    },
+    "adaptiveBackground": {
+      "path": "assets/brand/icon/adaptive-background.png",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "sha256": "3874e8092623735962c893f64ce870f69413f24e466fc4e6ada4cb717a6f3e1c"
+    },
+    "monochrome": {
+      "path": "assets/brand/icon/adaptive-monochrome.png",
+      "width": 1024,
+      "height": 1024,
+      "alpha": true,
+      "sha256": "7b1ff9453be6256c1ce1089da313bd1cd6b50f0547887fa30a2dfcdcb6b1544e"
+    },
+    "splashLogo": {
+      "path": "assets/brand/splash/splash-logo.png",
+      "width": 768,
+      "height": 768,
+      "alpha": true,
+      "sha256": "307ff5fd1e5fc79355d91712bd6e2f144889bfa947e45ac15990f734b331b5cd"
+    },
+    "splashFallback": {
+      "path": "assets/brand/splash/splash-static.png",
+      "width": 1080,
+      "height": 1920,
+      "alpha": false,
+      "sha256": "779c45bb7c0c551b0071e8110eb7268d44f37e36760bf6fd3f7b8090e3e55f95"
+    },
+    "introMark": {
+      "path": "assets/brand/animation/ecosystem-x-intro.png",
+      "width": 768,
+      "height": 768,
+      "alpha": true,
+      "sha256": "307ff5fd1e5fc79355d91712bd6e2f144889bfa947e45ac15990f734b331b5cd"
+    },
+    "introCore": {
+      "path": "assets/brand/animation/ecosystem-x-core.png",
+      "width": 768,
+      "height": 768,
+      "alpha": true,
+      "sha256": "7af85b7c62b2a153f2374bc70afd62b875ed82cd18390098ec070ad5401e46a8"
+    },
+    "personal": {
+      "path": "assets/brand/animation/node-personal.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "d24950db4e4991d72c24a6d587a867605917da9dd0a85d220cccc35c948422a5"
+    },
+    "business": {
+      "path": "assets/brand/animation/node-business.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "67ebf6253e4554c6130f8cee4fc6b0c554f95ce881aab975fe559470773e95a5"
+    },
+    "ai": {
+      "path": "assets/brand/animation/node-ai.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "8d3b113bd1a1f6be58d5ade8c7988a5e340ad94a83283ad5bcb9ace4d9da6925"
+    },
+    "commerce": {
+      "path": "assets/brand/animation/node-commerce.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "4383c26d2851b4ea89c60575051671a740949c99ab71713890b277ac2cfe02a1"
+    }
+  }
+}
