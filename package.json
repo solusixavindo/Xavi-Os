@@ -11,6 +11,7 @@
     "brand:sanitize-references": "node scripts/sanitize-brand-references.mjs",
     "brand:generate": "node scripts/generate-brand-assets.mjs",
     "brand:check": "node scripts/generate-brand-assets.mjs --check",
+    "test:workspace-concurrency": "node scripts/test-workspace-concurrency.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
     "test": "jest --runInBand"

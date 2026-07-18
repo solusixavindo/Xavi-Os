@@ -5,8 +5,6 @@ import { C } from '../../theme';
 import type { MembershipLevel } from '../profile/model';
 import { membershipPlans } from './plans';
 
-const rupiah = (value: number) => `Rp${value.toLocaleString('id-ID')}`;
-
 export function MembershipCards({ value, onChange }: { value: MembershipLevel; onChange: (value: MembershipLevel) => void }) {
   return (
     <View>
@@ -29,11 +27,14 @@ export function MembershipCards({ value, onChange }: { value: MembershipLevel; o
                 {plan.id === 'premium' ? <Pill color={plan.color}>TERPOPULER</Pill> : null}
               </View>
               <Text style={styles.headline}>{plan.headline}</Text>
-              <Text style={styles.benefits}>{plan.benefits.join(' • ')}</Text>
+              <Text style={styles.benefits}>
+                Personal Space tersedia
+                {plan.businessWorkspaceLimit > 0 ? ` • Batas teknis ${plan.businessWorkspaceLimit} Business Workspace` : ' • Business Workspace terkunci'}
+              </Text>
             </View>
             <View>
-              <Text style={[styles.price, { color: plan.color }]}>{plan.price ? rupiah(plan.price) : 'Gratis'}</Text>
-              {plan.price ? <Text style={styles.period}>/bulan</Text> : null}
+              <Text style={[styles.status, { color: plan.color }]}>{plan.id === 'basic' ? 'AKTIF DASAR' : 'INTENT SAJA'}</Text>
+              {plan.id !== 'basic' ? <Text style={styles.pending}>Harga pending</Text> : null}
             </View>
           </Pressable>
         );
@@ -69,6 +70,6 @@ const styles = StyleSheet.create({
   name: { color: C.text, fontSize: 16, fontWeight: '900' },
   headline: { color: C.muted, fontSize: 11, marginVertical: 5 },
   benefits: { color: C.muted, fontSize: 9, lineHeight: 14 },
-  price: { fontSize: 13, fontWeight: '900' },
-  period: { color: C.muted, fontSize: 8, textAlign: 'right' },
+  status: { fontSize: 10, fontWeight: '900', textAlign: 'right' },
+  pending: { color: C.muted, fontSize: 8, textAlign: 'right' },
 });

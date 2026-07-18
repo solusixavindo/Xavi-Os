@@ -4,7 +4,8 @@ Expo React Native application for the Xavindo personal and business ecosystem.
 
 ## Current stage
 
-Stage 2 implements the production authentication foundation:
+Stage 2 implements the production authentication foundation. Stage 3A adds a local-only,
+server-authoritative membership and workspace foundation for review:
 
 - Supabase email/password authentication
 - Email verification and resend flow
@@ -13,9 +14,15 @@ Stage 2 implements the production authentication foundation:
 - Protected auth, verification, onboarding, and main routes
 - Server-created profiles with Basic membership
 - Profile RLS and allowlisted profile update RPC
+- Canonical membership identifiers and typed technical entitlements
+- Effective membership derived from server-managed subscription lifecycle
+- Idempotent Personal Workspace provisioning
+- Entitlement-gated Business Workspace RPCs and workspace roles
+- Versioned, Zod-validated mobile access-context models
 
 Marketplace products remain a clearly marked development seed until Stage 4. Payments,
 paid membership activation, commissions, withdrawals, and Xendit are not enabled.
+The Stage 3A migration remains local until a separate hosted migration gate is approved.
 
 ## Local setup
 
@@ -60,9 +67,14 @@ development Supabase project only after review:
 
 ```text
 supabase/migrations/20260717160000_auth_profiles.sql
+supabase/migrations/20260718170000_membership_workspaces.sql
 ```
 
 See [docs/SUPABASE_AUTH_SETUP.md](docs/SUPABASE_AUTH_SETUP.md) before connecting a project.
+Membership/workspace authority and pending business decisions are documented in
+[docs/STAGE_3A_MEMBERSHIP_WORKSPACES.md](docs/STAGE_3A_MEMBERSHIP_WORKSPACES.md). The next
+Personal Dashboard requirements are in
+[docs/STAGE_3B_PERSONAL_DASHBOARD_REQUIREMENTS.md](docs/STAGE_3B_PERSONAL_DASHBOARD_REQUIREMENTS.md).
 
 Android development-client and EAS environment preparation is documented in
 [docs/EAS_DEVELOPMENT_BUILD.md](docs/EAS_DEVELOPMENT_BUILD.md). The development build

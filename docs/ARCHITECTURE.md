@@ -33,9 +33,21 @@ Changing local screen state cannot grant access to Main tabs.
   non-binding paid-membership upgrade intent.
 - Membership, points, role, KYC, referral code, and referrer remain server-managed.
 
+## Stage 3A access boundary
+
+- Effective membership derives from server-managed subscriptions with Basic fallback.
+- `profiles.membership` is a protected projection, not an authorization source.
+- Personal Workspace provisioning is an idempotent post-onboarding RPC, not an auth trigger.
+- Business Workspace creation, roles, limits, and archive state are checked by RPC.
+- `get_my_access_context()` is the mobile access contract; local workspace selection never
+  grants authorization.
+- See [STAGE_3A_MEMBERSHIP_WORKSPACES.md](STAGE_3A_MEMBERSHIP_WORKSPACES.md).
+- The final dashboard remains gated by
+  [STAGE_3B_PERSONAL_DASHBOARD_REQUIREMENTS.md](STAGE_3B_PERSONAL_DASHBOARD_REQUIREMENTS.md).
+
 ## Deferred boundaries
 
-- Membership entitlement and Business Space: Stage 3
+- Hosted migration and final Personal Dashboard integration: separate Stage 3 gates
 - Marketplace database and server-calculated orders: Stage 4
 - Xendit Test Mode and verified payment state: Stages 5–6
 - Commission, refunds, and withdrawals: Stages 7–9
