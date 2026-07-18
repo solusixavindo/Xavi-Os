@@ -31,6 +31,10 @@ EXPO_PUBLIC_SUPABASE_URL=https://bouxqdjongalkkbvcchm.supabase.co
 EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<copy the sb_publishable_ value locally>
 ```
 
+`EXPO_PUBLIC_SUPABASE_URL` must be the root Project URL from Supabase Connect/API
+settings (`https://<project-ref>.supabase.co`). Do not use a REST or Auth endpoint,
+including URLs ending in `/rest/v1`, `/rest_v1`, or `/auth/v1`.
+
 Copy the publishable key directly from the XAVI-OS Development Dashboard into the
 ignored local `.env`; do not send it through chat or commit it. The mobile configuration
 accepts only the `sb_publishable_` format. Never place a Supabase secret/service-role

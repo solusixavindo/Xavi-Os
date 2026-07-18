@@ -24,6 +24,12 @@ EXPO_PUBLIC_SUPABASE_URL=https://bouxqdjongalkkbvcchm.supabase.co
 EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<publishable key from the Dashboard>
 ```
 
+Use the root **Project URL** shown by Supabase Connect/API settings. The required
+shape is `https://<project-ref>.supabase.co`. Do not paste a REST endpoint, Auth
+endpoint, `/rest/v1`, `/rest_v1`, `/auth/v1`, query string, or fragment. The mobile
+configuration rejects non-root URLs so requests cannot be routed to the wrong
+Supabase service.
+
 Do not send the key through chat. Do not put a secret key, service-role key, legacy JWT,
 database password, access token, connection string, or Xendit credential in Expo config.
 The application intentionally has no compatibility fallback for those key types.

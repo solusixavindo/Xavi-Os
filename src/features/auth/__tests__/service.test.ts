@@ -1,4 +1,4 @@
-import { logoutAndClearSession } from '../service';
+import { logoutAndClearSession, safeAuthError } from '../service';
 
 describe('logout', () => {
   test('signs out locally and clears persisted session', async () => {
@@ -15,5 +15,12 @@ describe('logout', () => {
       logoutAndClearSession({ auth: { signOut: async () => ({ error: new Error('network') }) } }, clear),
     ).rejects.toThrow('network');
     expect(clear).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('safe auth errors', () => {
+  test('maps a gateway 404 without exposing technical details', () => {
+    const error = Object.assign(new Error('raw gateway response'), { status: 404 });
+    expect(safeAuthError(error)).toBe('Layanan autentikasi belum terhubung dengan benar.');
   });
 });

@@ -16,6 +16,8 @@ export async function logoutAndClearSession(client: SignOutClient, clearStorage:
 }
 
 export function safeAuthError(error: unknown): string {
+  const status = typeof error === 'object' && error !== null && 'status' in error ? error.status : undefined;
+  if (status === 404) return 'Layanan autentikasi belum terhubung dengan benar.';
   const message = error instanceof Error ? error.message.toLowerCase() : '';
   if (message.includes('invalid login credentials')) return 'Email atau password salah.';
   if (message.includes('email not confirmed')) return 'Email belum diverifikasi. Periksa kotak masuk Anda.';
